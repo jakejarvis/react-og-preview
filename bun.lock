@@ -50,7 +50,7 @@
     },
     "packages/react-og-preview": {
       "name": "react-og-preview",
-      "version": "0.0.0",
+      "version": "0.1.0",
       "dependencies": {
         "react-player": "^3.4.0",
       },
