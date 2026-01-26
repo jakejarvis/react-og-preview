@@ -1,0 +1,62 @@
+.card {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid #1f2124;
+  background-color: #2b2d31;
+  padding: 0.75rem;
+  color: white;
+  font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.hostname {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #b5bac1;
+  font-size: 12px;
+  line-height: 1rem;
+}
+
+.title {
+  margin-top: 0.25rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-weight: 600;
+  color: #58a6ff;
+  font-size: 16px;
+}
+
+.description {
+  margin-top: 0.25rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  color: #dbdee1;
+  font-size: 13px;
+}
+
+.imageContainer {
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background-color: #1f2124;
+}
+
+.imageWrapper {
+  aspect-ratio: 1200 / 628;
+  min-height: 150px;
+  width: 100%;
+}
+
+.placeholder {
+  color: #99a1ab;
+  font-size: 12px;
+}
+
+.audioContainer {
+  margin-top: 0.75rem;
+}

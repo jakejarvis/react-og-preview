@@ -1,0 +1,72 @@
+.card {
+  overflow: hidden;
+  border: 1px solid #dde6f2;
+  background-color: white;
+  color: black;
+  font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:global(.dark) .card {
+  border-color: #2e3a44;
+  background-color: #1d2226;
+  color: white;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  background-color: #eef3f8;
+}
+
+:global(.dark) .imageContainer {
+  background-color: #0b0f12;
+}
+
+.imageWrapper {
+  aspect-ratio: 1200 / 627;
+  min-height: 150px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+}
+
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-weight: 600;
+  color: #0a66c2;
+  font-size: 13px;
+}
+
+:global(.dark) .title {
+  color: #70b5f9;
+}
+
+.hostname {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #6e7781;
+  font-size: 13px;
+}
+
+:global(.dark) .hostname {
+  color: #9aa6b2;
+}
+
+.placeholder {
+  color: #6e7781;
+  font-size: 12px;
+}
+
+:global(.dark) .placeholder {
+  color: #9aa6b2;
+}

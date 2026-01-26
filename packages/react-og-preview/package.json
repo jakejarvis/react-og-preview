@@ -1,0 +1,80 @@
+{
+  "name": "react-og-preview",
+  "version": "0.0.0",
+  "description": "React component to preview Open Graph social media cards",
+  "license": "MIT",
+  "homepage": "https://react-og-preview.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakejarvis/react-og-preview.git",
+    "directory": "packages/react-og-preview"
+  },
+  "bugs": {
+    "url": "https://github.com/jakejarvis/react-og-preview/issues"
+  },
+  "author": {
+    "name": "Jake Jarvis",
+    "email": "jake@jarv.is",
+    "url": "https://jarv.is"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --external react --external react-dom --external react-player --production && bun run build:types",
+    "build:types": "tsc --project tsconfig.build.json",
+    "dev": "bun build ./src/index.ts --outdir ./dist --external react --external react-dom --external react-player --watch",
+    "lint": "biome check",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react-player": "^3.4.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3"
+  },
+  "keywords": [
+    "react",
+    "social",
+    "components",
+    "open graph",
+    "og",
+    "ogp",
+    "opengraph",
+    "social media",
+    "social cards",
+    "facebook",
+    "linkedin",
+    "slack",
+    "discord",
+    "twitter",
+    "x",
+    "meta",
+    "meta tags"
+  ]
+}

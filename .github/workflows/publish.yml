@@ -1,0 +1,41 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/react-og-preview
+
+    permissions:
+      contents: read
+      id-token: write # Required for OIDC trusted publishing and provenance
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+        working-directory: .
+
+      - name: Build package
+        run: bun run build
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
