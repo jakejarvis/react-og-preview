@@ -1,6 +1,6 @@
 {
   "name": "react-og-preview",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "React component to preview Open Graph social media cards",
   "license": "MIT",
   "homepage": "https://react-og-preview.vercel.app",
