@@ -1,9 +1,12 @@
 import {
+  BlueskyCard,
   DiscordCard,
   FacebookCard,
   LinkedInCard,
+  MastodonCard,
   SlackCard,
   TwitterCard,
+  WhatsAppCard,
 } from "@/components/providers";
 import type { SocialPreviewProps } from "@/types";
 
@@ -102,6 +105,49 @@ export function SocialPreview(props: SocialPreviewProps) {
         />
       );
       break;
+    case "bluesky":
+      card = (
+        <BlueskyCard
+          url={url}
+          title={title}
+          description={description}
+          image={image}
+          video={video}
+          audio={audio}
+          className={className}
+          ImageComponent={ImageComponent}
+        />
+      );
+      break;
+    case "mastodon":
+      card = (
+        <MastodonCard
+          url={url}
+          title={title}
+          description={description}
+          image={image}
+          video={video}
+          audio={audio}
+          variant={props.variant}
+          className={className}
+          ImageComponent={ImageComponent}
+        />
+      );
+      break;
+    case "whatsapp":
+      card = (
+        <WhatsAppCard
+          url={url}
+          title={title}
+          description={description}
+          image={image}
+          video={video}
+          audio={audio}
+          className={className}
+          ImageComponent={ImageComponent}
+        />
+      );
+      break;
   }
 
   if (!card) {
@@ -126,12 +172,19 @@ export function SocialPreview(props: SocialPreviewProps) {
     );
   }
 
+  const getVariant = () => {
+    if (provider === "twitter" || provider === "mastodon") {
+      return props.variant;
+    }
+    return undefined;
+  };
+
   if (disableLink) {
     return (
       <div
         data-slot="social-preview"
         data-provider={provider}
-        data-variant={provider === "twitter" ? props.variant : undefined}
+        data-variant={getVariant()}
         style={{
           display: "block",
           width: "100%",
@@ -150,7 +203,7 @@ export function SocialPreview(props: SocialPreviewProps) {
       aria-label="Open link in a new tab"
       data-slot="social-preview"
       data-provider={provider}
-      data-variant={provider === "twitter" ? props.variant : undefined}
+      data-variant={getVariant()}
       style={{
         display: "block",
         width: "100%",

@@ -1,0 +1,163 @@
+/* Mastodon Status Card */
+/* Based on official mastodon/mastodon styling */
+/* Mastodon uses Roboto (open-source) */
+
+.card {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(24, 24, 33, 0.15);
+  background-color: white;
+  color: #181821;
+  font-family:
+    Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+}
+
+:global(.dark) .card {
+  border-color: rgba(200, 205, 254, 0.18);
+  background-color: #181821;
+  color: #f0f1ff;
+}
+
+/* Compact variant - horizontal layout */
+.compact {
+  display: flex;
+  align-items: center;
+}
+
+.compactImageContainer {
+  flex-shrink: 0;
+  width: 120px;
+  aspect-ratio: 1 / 1;
+  background-color: #f7f7f9;
+  overflow: hidden;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+:global(.dark) .compactImageContainer {
+  background-color: #1d1d2a;
+}
+
+/* Expanded variant - vertical layout */
+.expanded {
+  display: flex;
+  flex-direction: column;
+}
+
+.expandedImageContainer {
+  width: 100%;
+  background-color: #f7f7f9;
+  overflow: hidden;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+:global(.dark) .expandedImageContainer {
+  background-color: #1d1d2a;
+}
+
+.expandedImageWrapper {
+  aspect-ratio: 1200 / 630;
+  width: 100%;
+}
+
+/* Content section */
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Hostname */
+.hostname {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #545778;
+}
+
+:global(.dark) .hostname {
+  color: #8b8dac;
+}
+
+.card:hover .hostname {
+  color: #6147e6;
+}
+
+:global(.dark) .card:hover .hostname {
+  color: #8886ff;
+}
+
+/* Title */
+.title {
+  display: block;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 24px;
+  color: #181821;
+}
+
+:global(.dark) .title {
+  color: #f0f1ff;
+}
+
+.card:hover .title {
+  color: #6147e6;
+}
+
+:global(.dark) .card:hover .title {
+  color: #8886ff;
+}
+
+.titleCompact {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.titleExpanded {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+}
+
+/* Description */
+.description {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #545778;
+}
+
+:global(.dark) .description {
+  color: #8b8dac;
+}
+
+.card:hover .description {
+  color: #6147e6;
+}
+
+:global(.dark) .card:hover .description {
+  color: #8886ff;
+}
+
+/* Placeholder */
+.placeholder {
+  color: #545778;
+  font-size: 12px;
+}
+
+:global(.dark) .placeholder {
+  color: #8b8dac;
+}

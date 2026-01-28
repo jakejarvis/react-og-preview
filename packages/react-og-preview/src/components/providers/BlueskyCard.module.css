@@ -1,0 +1,165 @@
+/* Bluesky External Link Card */
+/* Based on official bluesky-social/social-app styling */
+/* Bluesky uses Inter (open-source) */
+
+.card {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #dce2ea;
+  background-color: white;
+  color: black;
+  font-family:
+    Inter, InterVariable, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-variant: no-contextual;
+}
+
+.card:hover {
+  border-color: #a5b2c5;
+  background-color: #e2e7ee;
+}
+
+:global(.dark) .card {
+  border-color: #232e3e;
+  background-color: #151d28;
+  color: #f0f1ff;
+}
+
+:global(.dark) .card:hover {
+  border-color: #27313f;
+  background-color: #1c2531;
+}
+
+/* Image container */
+.imageContainer {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+:global(.dark) .imageContainer {
+  background-color: #1a1a2e;
+}
+
+.imageWrapper {
+  aspect-ratio: 1200 / 630;
+  width: 100%;
+}
+
+/* Content section */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 8px;
+}
+
+.contentWithMedia {
+  border-top: 1px solid #dce2ea;
+}
+
+:global(.dark) .contentWithMedia {
+  border-top-color: #232e3e;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0 12px 4px;
+}
+
+/* Title */
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Description */
+.description {
+  font-size: 13.1px;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  color: inherit;
+}
+
+.descriptionWithMedia {
+  -webkit-line-clamp: 2;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background-color: #dce2ea;
+  margin: 0 12px;
+}
+
+:global(.dark) .divider {
+  background-color: #232e3e;
+}
+
+/* URL row */
+.urlRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px 8px;
+}
+
+.globeIcon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: #8798b0;
+}
+
+.card:hover .globeIcon {
+  color: #667b99;
+}
+
+:global(.dark) .globeIcon {
+  color: #526580;
+}
+
+:global(.dark) .card:hover .globeIcon {
+  color: #667b99;
+}
+
+.hostname {
+  font-size: 11.3px;
+  line-height: 1.3;
+  color: #8798b0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card:hover .hostname {
+  color: #405168;
+}
+
+:global(.dark) .hostname {
+  color: #526580;
+}
+
+:global(.dark) .card:hover .hostname {
+  color: #8798b0;
+}
+
+/* Placeholder */
+.placeholder {
+  color: #8798b0;
+  font-size: 11px;
+}
+
+:global(.dark) .placeholder {
+  color: #526580;
+}

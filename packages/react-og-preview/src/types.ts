@@ -9,7 +9,10 @@ export type SocialPreviewProvider =
   | "facebook"
   | "linkedin"
   | "slack"
-  | "discord";
+  | "discord"
+  | "bluesky"
+  | "mastodon"
+  | "whatsapp";
 
 /**
  * Display variants for Twitter/X preview cards.
@@ -20,6 +23,14 @@ export type SocialPreviewProvider =
  * @see https://developer.x.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
  */
 export type TwitterVariant = "compact" | "large";
+
+/**
+ * Display variants for Mastodon preview cards.
+ *
+ * - `"compact"` - Horizontal layout with square thumbnail on the left
+ * - `"expanded"` - Vertical layout with full-width image on top
+ */
+export type MastodonVariant = "compact" | "expanded";
 
 /**
  * Props passed to custom image components.
@@ -383,6 +394,73 @@ export interface DiscordPreviewProps extends SocialPreviewBaseProps {
 }
 
 /**
+ * Props for Bluesky preview cards.
+ *
+ * @example
+ * ```tsx
+ * <SocialPreview
+ *   provider="bluesky"
+ *   url="https://example.com"
+ *   title="My Page Title"
+ *   description="A description of my page"
+ *   image="https://example.com/og-image.jpg"
+ * />
+ * ```
+ */
+export interface BlueskyPreviewProps extends SocialPreviewBaseProps {
+  /** Specifies the Bluesky provider */
+  provider: "bluesky";
+}
+
+/**
+ * Props for Mastodon preview cards.
+ *
+ * @example
+ * ```tsx
+ * <SocialPreview
+ *   provider="mastodon"
+ *   variant="expanded"
+ *   url="https://example.com"
+ *   title="My Page Title"
+ *   description="A description of my page"
+ *   image="https://example.com/og-image.jpg"
+ * />
+ * ```
+ */
+export interface MastodonPreviewProps extends SocialPreviewBaseProps {
+  /** Specifies the Mastodon provider */
+  provider: "mastodon";
+
+  /**
+   * The card variant to display.
+   * - `"compact"` - Horizontal layout with square thumbnail on the left
+   * - `"expanded"` - Vertical layout with full-width image on top
+   *
+   * @default "compact"
+   */
+  variant?: MastodonVariant;
+}
+
+/**
+ * Props for WhatsApp preview cards.
+ *
+ * @example
+ * ```tsx
+ * <SocialPreview
+ *   provider="whatsapp"
+ *   url="https://example.com"
+ *   title="My Page Title"
+ *   description="A description of my page"
+ *   image="https://example.com/og-image.jpg"
+ * />
+ * ```
+ */
+export interface WhatsAppPreviewProps extends SocialPreviewBaseProps {
+  /** Specifies the WhatsApp provider */
+  provider: "whatsapp";
+}
+
+/**
  * Props for the `SocialPreview` component.
  *
  * This is a discriminated union type based on the `provider` prop.
@@ -402,4 +480,7 @@ export type SocialPreviewProps =
   | FacebookPreviewProps
   | LinkedInPreviewProps
   | SlackPreviewProps
-  | DiscordPreviewProps;
+  | DiscordPreviewProps
+  | BlueskyPreviewProps
+  | MastodonPreviewProps
+  | WhatsAppPreviewProps;

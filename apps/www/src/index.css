@@ -4,6 +4,13 @@
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
 
+/* Fonts for social preview cards */
+@import "@fontsource-variable/inter"; /* Bluesky */
+@import "@fontsource-variable/noto-sans"; /* Discord fallback */
+@import "@fontsource/lato/400.css"; /* Slack */
+@import "@fontsource/lato/700.css"; /* Slack */
+@import "@fontsource-variable/roboto"; /* Mastodon */
+
 @custom-variant dark (&:is(.dark *));
 
 :root {

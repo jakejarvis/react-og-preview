@@ -1,3 +1,4 @@
+/* Slack uses Lato (open-source Google Font) */
 .card {
   position: relative;
   overflow: hidden;
@@ -8,13 +9,22 @@
   padding-left: 1.5rem;
   color: black;
   font-family:
-    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    Lato, "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 :global(.dark) .card {
   border-color: #2b2e33;
   background-color: #1f2329;
   color: white;
+}
+
+:global(.dark) .card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 .border {
@@ -46,7 +56,7 @@
 
 .title {
   margin-top: 0.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #1d9bd1;
   font-size: 15px;
 }
@@ -58,7 +68,8 @@
 .description {
   margin-top: 0.25rem;
   color: #4a4e52;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 :global(.dark) .description {

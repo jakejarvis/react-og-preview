@@ -18,6 +18,7 @@ import { useCallback, useState } from "react";
 import {
   type AudioMetadata,
   type ImageMetadata,
+  type MastodonVariant,
   SocialPreview,
   type SocialPreviewProvider,
   type TwitterVariant,
@@ -75,6 +76,9 @@ const providers: {
   { label: "LinkedIn", value: "linkedin", icon: SocialIcons.linkedin },
   { label: "Slack", value: "slack", icon: SocialIcons.slack },
   { label: "Discord", value: "discord", icon: SocialIcons.discord },
+  { label: "Bluesky", value: "bluesky", icon: SocialIcons.bluesky },
+  { label: "Mastodon", value: "mastodon", icon: SocialIcons.mastodon },
+  { label: "WhatsApp", value: "whatsapp", icon: SocialIcons.whatsapp },
 ];
 
 function ProviderIcon({
@@ -87,9 +91,14 @@ function ProviderIcon({
   return <provider.icon className={className} />;
 }
 
-const variants: { label: string; value: TwitterVariant }[] = [
+const twitterVariants: { label: string; value: TwitterVariant }[] = [
   { label: "Large", value: "large" },
   { label: "Compact", value: "compact" },
+];
+
+const mastodonVariants: { label: string; value: MastodonVariant }[] = [
+  { label: "Compact", value: "compact" },
+  { label: "Expanded", value: "expanded" },
 ];
 
 function normalizeUrl(input: string): string {
@@ -105,7 +114,9 @@ function normalizeUrl(input: string): string {
 function HomePage() {
   const { setTheme, resolvedTheme } = useTheme();
   const [provider, setProvider] = useState<SocialPreviewProvider>("twitter");
-  const [variant, setVariant] = useState<TwitterVariant>("large");
+  const [twitterVariant, setTwitterVariant] = useState<TwitterVariant>("large");
+  const [mastodonVariant, setMastodonVariant] =
+    useState<MastodonVariant>("compact");
   const [url, setUrl] = useState("https://react.dev");
   const [title, setTitle] = useState("React");
   const [description, setDescription] = useState(
@@ -148,7 +159,7 @@ function HomePage() {
       setAudioUrl(data.audio?.url ?? "");
       // Set Twitter variant based on the fetched twitter:card meta tag
       if (data.twitterCard) {
-        setVariant(
+        setTwitterVariant(
           data.twitterCard === "summary_large_image" ? "large" : "compact",
         );
       }
@@ -492,9 +503,11 @@ function HomePage() {
                   </Select>
                   {provider === "twitter" && (
                     <Select
-                      items={variants}
-                      value={variant}
-                      onValueChange={(v) => setVariant(v as TwitterVariant)}
+                      items={twitterVariants}
+                      value={twitterVariant}
+                      onValueChange={(v) =>
+                        setTwitterVariant(v as TwitterVariant)
+                      }
                     >
                       <SelectTrigger>
                         <ProportionsIcon className="mx-0.5 size-3 text-muted-foreground" />
@@ -502,7 +515,30 @@ function HomePage() {
                       </SelectTrigger>
                       <SelectContent align="start" alignItemWithTrigger={false}>
                         <SelectGroup>
-                          {variants.map((v) => (
+                          {twitterVariants.map((v) => (
+                            <SelectItem key={v.value} value={v.value}>
+                              {v.label}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  )}
+                  {provider === "mastodon" && (
+                    <Select
+                      items={mastodonVariants}
+                      value={mastodonVariant}
+                      onValueChange={(v) =>
+                        setMastodonVariant(v as MastodonVariant)
+                      }
+                    >
+                      <SelectTrigger>
+                        <ProportionsIcon className="mx-0.5 size-3 text-muted-foreground" />
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent align="start" alignItemWithTrigger={false}>
+                        <SelectGroup>
+                          {mastodonVariants.map((v) => (
                             <SelectItem key={v.value} value={v.value}>
                               {v.label}
                             </SelectItem>
@@ -515,7 +551,13 @@ function HomePage() {
                 <div className="mx-auto max-w-[520px]">
                   <SocialPreview
                     provider={provider}
-                    variant={provider === "twitter" ? variant : undefined}
+                    variant={
+                      provider === "twitter"
+                        ? twitterVariant
+                        : provider === "mastodon"
+                          ? mastodonVariant
+                          : undefined
+                    }
                     url={url}
                     title={title}
                     description={description}
@@ -542,7 +584,13 @@ function HomePage() {
                   </h4>
                   <SocialPreview
                     provider={p.value}
-                    variant={p.value === "twitter" ? "compact" : undefined}
+                    variant={
+                      p.value === "twitter"
+                        ? "compact"
+                        : p.value === "mastodon"
+                          ? "compact"
+                          : undefined
+                    }
                     url={url}
                     title={title}
                     description={description}

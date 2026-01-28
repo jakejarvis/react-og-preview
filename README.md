@@ -14,6 +14,9 @@
 - **LinkedIn**
 - **Slack**
 - **Discord**
+- **Bluesky**
+- **Mastodon** — compact and expanded
+- **WhatsApp**
 - more soon...
 
 ## Installation
